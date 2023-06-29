@@ -47,3 +47,35 @@ def zalgo(patt):
 
     return z_array
 
+def patternMatching(text,pattern):
+    """
+    This function finds the occurrences of the pattern that appears in the text.
+    First value of the output list is the total number of occurrences of the pattern in the text 
+    Time complexity: O(N) 
+    Space complexity: O(N) 
+    """
+    lst = [0] 
+    #Add the pattern before the text with terminal symbol in between them, then perform Z-algo on the string
+    prefix = pattern+'$'+text
+    ZalgoPrefix = zalgo(prefix)
+
+    #Add the pattern after the text to get the reverse z-algo of the combined string
+    suffix = text+'$'+pattern
+    suffix = suffix[::-1]
+    ZalgoSuffix = zalgo(suffix)
+
+    #check the Prefix and the Suffix Zbox starting from the pattern
+    ZalgoPrefix = ZalgoPrefix[len(pattern)+1:len(prefix)-len(pattern)+1]
+    ZalgoSuffix = ZalgoSuffix[len(pattern)+1:len(prefix)-len(pattern)+1]
+    
+    #Reverse the ZalgoSuffix array so comparism can be done with the ZalgoPrefix array to find the transposition error
+    ZalgoSuffix = ZalgoSuffix[::-1]
+
+    #Comparing the 2 Zbox array,if there is a matching value means there is an occurance of the pattern
+    for i in range(len(ZalgoPrefix)):
+        #Find position of the occurrance of pattern in the text 
+        if ZalgoSuffix[i] + ZalgoPrefix[i] == 2*len(pattern):
+            lst.append((i+1))
+
+    lst[0] = len(lst)-1 #set the total number of occurrences to first index of the list 
+    return lst
