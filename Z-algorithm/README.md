@@ -5,4 +5,4 @@
 
 I have also included a pattern matching function with the Z-algorithm to demonstrate how it should be used.
 
-#### To learn more about the Z-algorithm go to: [GeeksforGeeks' explaination of the Z-algorithm](/https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/)
+To learn more about the Z-algorithm go to: [GeeksforGeeks' explaination of the Z-algorithm](/https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/)
